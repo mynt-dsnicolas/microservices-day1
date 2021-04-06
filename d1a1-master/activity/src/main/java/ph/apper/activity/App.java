@@ -21,7 +21,7 @@ public class App {
 
     @RestController
     @RequestMapping("activity")
-    public static class AccountController {
+    public static class ActivityController {
 
         @PostMapping
         public ResponseEntity create(@RequestBody Request request){
