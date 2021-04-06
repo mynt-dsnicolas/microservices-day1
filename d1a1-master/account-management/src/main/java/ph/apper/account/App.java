@@ -37,8 +37,28 @@ public class App {
         @PostMapping
         public ResponseEntity create(@RequestBody CreateAccountRequest request){
             LOGGER.info(String.valueOf(request));
+
+            Activity activity = new Activity();
+            activity.setAction("REGISTRATION");
+            activity.setIdentifier("email=" + request.getEmail());
+
+            ResponseEntity<Object> response
+                = restTemplate.postForEntity("http://localhost:8087/activity", activity, Object.class);
+
+            if (response.getStatusCode().is2xxSuccessful()){
+                LOGGER.info("Success!");
+            } else {
+                LOGGER.error("Erro! " + response.getStatusCode());
+            }
+
             return ResponseEntity.ok().build();
 
+        }
+
+        @Data
+        public static class Activity {
+            private String action;
+            private String identifier;
         }
 
         @Data
