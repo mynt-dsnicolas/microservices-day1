@@ -1,0 +1,2 @@
+EC2 IP Address: 54.151.156.106
+EC2 Name: EC2-dsnicolas-microservice
